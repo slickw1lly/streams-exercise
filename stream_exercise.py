@@ -33,7 +33,7 @@ class StreamProcessor(object):
     process method will:
 
             1. Read two digits at a time from the stream: "23", "47", "61", etc.
-            2. Convert these digits into a number: 23, 47, 61, etc., and  make a
+            2. Convert these digits into a number: 23, 47, 61, etc., and make a
                running total of these numbers: 23 + 47 equals 70. 70 + 61 equals
                131, etc.
             3. For this particular stream, the running total will exceed 200 after
@@ -47,21 +47,20 @@ class StreamProcessor(object):
 
     def process(self):
         """
-        TODO: Implement the `process` method, as described above.
-        
+        Implement the `process` method, as described above.
         :return: int
         """
-
-        count = 0  # How many two-digit numbers the `process` method has added
-                   # together.
-        total = 0  # The running total of sums.
-
-        # TODO: WRITE CODE HERE:
-
-        # Just some example syntax, you can read two digits from the head of the
-        # stream using the following code:
-        #
-        # digits = self._stream.read(2)
-
-
+        length = 2
+        count = 0
+        total = 0
+        while count < 10:
+            digits = self._stream.read(length)
+            if len(digits) == length:
+                count += 1
+                numbers = int(digits)
+                total += numbers
+                if total >= 200:
+                    break
+            else:
+                break
         return count
